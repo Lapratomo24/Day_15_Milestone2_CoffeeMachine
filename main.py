@@ -24,8 +24,17 @@ def check_resource(the_ingredients):
     return True
 
 
+def inserted_coins():
+    print("Please insert coins.")
+    total = int(input("How many quarters? ")) * 0.25
+    total += int(input("How many dimes? ")) * 0.1
+    total += int(input("How many nickles? ")) * 0.05
+    total += int(input("How many pennies? ")) * 0.01
+    # print(f"You inserted ${round(total, 2)}.")
+    return total
 
-
+def check_transaction(coins):
+    if total
 
 turn_off = False
 
@@ -40,4 +49,5 @@ while not turn_off:
         coffee = coffee_type[selection]
         print(coffee)
         if check_resource(coffee['ingredients']):
-
+            inserted_coins()
+            check_transaction()
