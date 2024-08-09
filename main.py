@@ -33,8 +33,16 @@ def inserted_coins():
     # print(f"You inserted ${round(total, 2)}.")
     return total
 
+
 def check_transaction(coins):
-    if total
+    if coins < coffee_type['cost']:
+        print("Sorry, not enough money. Money refunded.")
+    elif coins > coffee_type['cost']:
+        change = coffee_type['cost'] - coins
+        print(f"Your change is {change}.")
+    else:
+        resource['money'] += coins
+
 
 turn_off = False
 
@@ -49,5 +57,5 @@ while not turn_off:
         coffee = coffee_type[selection]
         print(coffee)
         if check_resource(coffee['ingredients']):
-            inserted_coins()
-            check_transaction()
+            payment = inserted_coins()
+            check_transaction(payment)
