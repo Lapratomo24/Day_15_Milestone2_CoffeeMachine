@@ -3,18 +3,18 @@ from machine import coffee_type, resource
 
 print(logo)
 
-water = resource['water']
-milk = resource['milk']
-coffee = resource['coffee']
 money = resource['money']
 
 
 def report_resource():
-    water
+    water = resource['water']
+    milk = resource['milk']
+    coffee = resource['coffee']
+
     print(f"{water}ml of water")
     print(f"{milk}ml of milk")
     print(f"{coffee}g of coffee")
-    print(f"Current profit: {money}.")
+    print(f"Current profit: {round(money)}.")
 
 
 def check_resource(the_ingredients):
@@ -49,6 +49,12 @@ def check_transaction(coins, cost):
         return True
 
 
+def make_coffee(coffee_name, coffee_ingredients):
+    for item in coffee_ingredients:
+        resource[item] -= coffee_ingredients[item]
+    print(f"Here is you {coffee_name}. Enjoy ☕!")
+
+
 turn_off = False
 
 while not turn_off:
@@ -64,4 +70,4 @@ while not turn_off:
         if check_resource(choice['ingredients']):
             payment = inserted_coins()
             if check_transaction(payment, choice['cost']):
-
+                make_coffee(selection, choice['ingredients'])
