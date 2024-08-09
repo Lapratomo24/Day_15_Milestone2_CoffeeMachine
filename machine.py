@@ -1,5 +1,5 @@
 coffee_type = {
-    'cappuccino': {
+    'espresso': {
         'ingredients': {
             'water': 50,
             'coffee': 18
@@ -14,7 +14,7 @@ coffee_type = {
         },
         'cost': 2.5
     },
-    'espresso': {
+    'cappuccino': {
         'ingredients': {
             'water': 250,
             'milk': 100,
@@ -22,4 +22,11 @@ coffee_type = {
         },
         'cost': 3
     }
+}
+
+resource = {
+    'water': 500,
+    'milk': 300,
+    'coffee': 80,
+    'money': 0
 }
