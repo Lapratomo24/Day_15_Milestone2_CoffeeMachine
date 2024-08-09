@@ -17,15 +17,11 @@ def report_resource():
 
 
 def check_resource(the_ingredients):
-    required_water = coffee['ingredients']['water']
-    required_milk = coffee['ingredients']['milk']
-    required_coffee = coffee['ingredients']['coffee']
-    if water < required_water:
-        return "Sorry, there is not enough water."
-    elif milk < required_milk:
-        return "Sorry, there is not enough milk."
-    elif coffee < required_coffee:
-        return "Sorry, there is not enough coffee."
+    for item in the_ingredients:
+        if the_ingredients[item] >= resource[item]:
+            print(f"Sorry, there is not enough {item}.")
+            return False
+    return True
 
 
 
@@ -43,4 +39,5 @@ while not turn_off:
     else:
         coffee = coffee_type[selection]
         print(coffee)
-        check_resource(coffee['ingredients'])
+        if check_resource(coffee['ingredients']):
+
