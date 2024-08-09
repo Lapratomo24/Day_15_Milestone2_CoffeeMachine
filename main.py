@@ -10,6 +10,7 @@ money = resource['money']
 
 
 def report_resource():
+    water
     print(f"{water}ml of water")
     print(f"{milk}ml of milk")
     print(f"{coffee}g of coffee")
@@ -34,14 +35,18 @@ def inserted_coins():
     return total
 
 
-def check_transaction(coins):
-    if coins < coffee_type['cost']:
+def check_transaction(coins, cost):
+    # cost = coffee_cost[selection]['cost']
+    if coins < cost:
         print("Sorry, not enough money. Money refunded.")
-    elif coins > coffee_type['cost']:
-        change = coffee_type['cost'] - coins
-        print(f"Your change is {change}.")
-    else:
-        resource['money'] += coins
+        return False
+    elif coins > cost:
+        change = round(coins - cost)
+        print(f"Your change is ${change}.")
+        global money
+        money += coins
+        print(f"Total profit: ${round(money)}.")
+        return True
 
 
 turn_off = False
@@ -54,8 +59,9 @@ while not turn_off:
     elif selection == 'report':
         report_resource()
     else:
-        coffee = coffee_type[selection]
-        print(coffee)
-        if check_resource(coffee['ingredients']):
+        choice = coffee_type[selection]
+        print(choice)
+        if check_resource(choice['ingredients']):
             payment = inserted_coins()
-            check_transaction(payment)
+            if check_transaction(payment, choice['cost']):
+
